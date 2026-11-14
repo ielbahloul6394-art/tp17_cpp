@@ -1,0 +1,19 @@
+all: demo
+
+demo: Point.o Segment.o Triangle.o main.o
+	g++ $^ -o demo
+
+Point.o: src/Point.cpp include/Point.h
+	g++ -Iinclude -c src/Point.cpp
+
+Segment.o: src/Segment.cpp include/Segment.h
+	g++ -Iinclude -c src/Segment.cpp
+
+Triangle.o: src/Triangle.cpp include/Triangle.h
+	g++ -Iinclude -c src/Triangle.cpp
+
+main.o: main.cpp
+	g++ -Iinclude -c main.cpp
+
+clean:
+	rm -f *.o demo
